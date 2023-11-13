@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "League of Legends",
+        "developer": "Riot Games"
+    },
+    {
+        "id": 2,
+        "name": "Valorant",
+        "developer": "Riot Games"
+    },
+    {
+        "id": 3,
+        "name": "Stray",
+        "developer": "Annapurna Studios"
+    }
+]
