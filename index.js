@@ -15,6 +15,9 @@ const gamesAPI = (req, res) => {
     // construct the path to the users JSON file inside the 'users' folder
     const filePath = path.join(__dirname, 'games', 'games.json');
 
+    const gameName = req.query.name; // /games?name=leagueoflegends
+    console.log(gameName);
+
     // reading the JSON file
     fs.readFile(filePath, 'utf-8', (err, data) => {
         if (err){
@@ -26,13 +29,21 @@ const gamesAPI = (req, res) => {
         // parse the JSON data
         const jsonData = JSON.parse(data);
 
-        res.json(jsonData);
+        // res.json(jsonData);
+
+        // testing
+        if(gameName){
+            // const result = jsonData.filter(game => game.name.toLowerCase() === gameName.toLowerCase());
+            const result = jsonData.filter(game => game.name.trim().toLowerCase().includes(gameName.trim().toLowerCase()));
+            res.json({ jsonData: result });
+        }else{
+            res.json(jsonData);
+        }
     });
 };
 
 const homeAPI = (req, res) => {
     res.send("hello mero api!");
-    // console.log('yo chai homepage ko api');
 };
 
 app.get('/games', gamesAPI);
